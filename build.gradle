@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    //id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+/*application {
+    mainClassName = 'com.something.MyMainClass'
+}*/
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile){
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+    /*useTestNG() {
+        includeGroups 'smoke', 'sanity'
+       excludeGroups 'regression'
+    }*/
+}
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+    testImplementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+    implementation("io.github.bonigarcia:webdrivermanager:4.0.0")
+    implementation 'com.codeborne:selenide:5.12.2'
+    implementation 'io.appium:java-client:7.3.0'
+    testImplementation 'com.codeborne:selenide:5.12.2'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+}
